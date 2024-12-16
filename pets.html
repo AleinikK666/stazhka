@@ -249,5 +249,45 @@
 
 
 </body>
-
+<script>
+    // Обработчик событий для кнопок "Learn more"
+    const petButtons = document.querySelectorAll('.pet__btn');
+    
+    petButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const petCard = button.closest('.pet__card-item');
+        const petName = petCard.querySelector('.pet__title').textContent.trim();
+        displayPetInfo(petName);
+      });
+    });
+    
+    function displayPetInfo(petName) {
+      // Имитация запроса данных об афише
+      const petInfo = {
+        'Katrine': 'Katrine is a friendly dog looking for a loving home.',
+        'Jennifer': 'Jennifer is a playful kitten who loves to cuddle.',
+        'Woody': 'Woody is an energetic pup ready for adventures.',
+        'Sophia': 'Sophia is a calm and caring cat.',
+        'Timmy': 'Timmy is a cheerful dog who enjoys playing outside.',
+        'Charly': 'Charly is a loyal companion full of love.',
+        'Scarlet': 'Scarlet is a smart cat with a curious nature.',
+        'Freddie': 'Freddie is a gentle cat who loves to relax.'
+      };
+    
+      const infoBlock = document.createElement('div');
+      infoBlock.className = 'pet-info-block';
+      infoBlock.innerHTML = `
+        <h3>${petName}</h3>
+        <p>${petInfo[petName] || 'Information not available.'}</p>
+        <button class="close-btn">Close</button>
+      `;
+    
+      document.body.appendChild(infoBlock);
+    
+      // Закрытие окна информации
+      infoBlock.querySelector('.close-btn').addEventListener('click', () => {
+        infoBlock.remove();
+      });
+    }
+    </script>
 </html>
