@@ -250,7 +250,6 @@
 
 </body>
 <script>
-    // Обработчик событий для кнопок "Learn more"
     const petButtons = document.querySelectorAll('.pet__btn');
     
     petButtons.forEach(button => {
@@ -262,7 +261,6 @@
     });
     
     function displayPetInfo(petName) {
-      // Имитация запроса данных об афише
       const petInfo = {
         'Katrine': 'Katrine is a friendly dog looking for a loving home.',
         'Jennifer': 'Jennifer is a playful kitten who loves to cuddle.',
@@ -283,8 +281,7 @@
       `;
     
       document.body.appendChild(infoBlock);
-    
-      // Закрытие окна информации
+
       infoBlock.querySelector('.close-btn').addEventListener('click', () => {
         infoBlock.remove();
       });
