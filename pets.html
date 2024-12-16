@@ -250,7 +250,7 @@
 
 </body>
 <script>
-    const petButtons = document.querySelectorAll('.pet__btn');
+   const petButtons = document.querySelectorAll('.pet__btn');
     
     petButtons.forEach(button => {
       button.addEventListener('click', () => {
@@ -260,31 +260,75 @@
       });
     });
     
-    function displayPetInfo(petName) {
-      const petInfo = {
-        'Katrine': 'Katrine is a friendly dog looking for a loving home.',
-        'Jennifer': 'Jennifer is a playful kitten who loves to cuddle.',
-        'Woody': 'Woody is an energetic pup ready for adventures.',
-        'Sophia': 'Sophia is a calm and caring cat.',
-        'Timmy': 'Timmy is a cheerful dog who enjoys playing outside.',
-        'Charly': 'Charly is a loyal companion full of love.',
-        'Scarlet': 'Scarlet is a smart cat with a curious nature.',
-        'Freddie': 'Freddie is a gentle cat who loves to relax.'
-      };
-    
-      const infoBlock = document.createElement('div');
-      infoBlock.className = 'pet-info-block';
-      infoBlock.innerHTML = `
-        <h3>${petName}</h3>
-        <p>${petInfo[petName] || 'Information not available.'}</p>
-        <button class="close-btn">Close</button>
-      `;
-    
-      document.body.appendChild(infoBlock);
+    const petInfo = {
+        "Katrine": {
+            "description": "Katrine is a friendly dog looking for a loving home.",
+            "species": "Dog",
+            "age": "3 years",
+            "temperament": "Friendly"
+        },
+        "Jennifer": {
+            "description": "Jennifer is a playful kitten who loves to cuddle.",
+            "species": "Cat",
+            "age": "1 year",
+            "temperament": "Playful"
+        },
+        "Woody": {
+            "description": "Woody is an energetic pup ready for adventures.",
+            "species": "Dog",
+            "age": "2 years",
+            "temperament": "Energetic"
+        },
+        "Sophia": {
+            "description": "Sophia is a calm and caring cat.",
+            "species": "Cat",
+            "age": "4 years",
+            "temperament": "Calm"
+        },
+        "Timmy": {
+            "description": "Timmy is a cheerful dog who enjoys playing outside.",
+            "species": "Dog",
+            "age": "2 years",
+            "temperament": "Cheerful"
+        },
+        "Charly": {
+            "description": "Charly is a loyal companion full of love.",
+            "species": "Dog",
+            "age": "5 years",
+            "temperament": "Loyal"
+        },
+        "Scarlet": {
+            "description": "Scarlet is a smart cat with a curious nature.",
+            "species": "Cat",
+            "age": "3 years",
+            "temperament": "Curious"
+        },
+        "Freddie": {
+            "description": "Freddie is a gentle cat who loves to relax.",
+            "species": "Cat",
+            "age": "4 years",
+            "temperament": "Gentle"
+        }
+    };
 
-      infoBlock.querySelector('.close-btn').addEventListener('click', () => {
+    function displayPetInfo(petName) {
+    const petDetails = petInfo[petName] || { description: 'Information not available.' };
+    
+    const infoBlock = document.createElement('div');
+    infoBlock.className = 'pet-info-block';
+    infoBlock.innerHTML = `
+        <h3>${petName}</h3>
+        <p>${petDetails.description}</p>
+        <p><strong>Species:</strong> ${petDetails.species || 'N/A'}</p>
+        <p><strong>Age:</strong> ${petDetails.age || 'N/A'}</p>
+        <p><strong>Temperament:</strong> ${petDetails.temperament || 'N/A'}</p>
+        <button class="close-btn">Close</button>
+    `;
+    
+    document.body.appendChild(infoBlock);
+    infoBlock.querySelector('.close-btn').addEventListener('click', () => {
         infoBlock.remove();
-      });
+    });
     }
     </script>
 </html>
